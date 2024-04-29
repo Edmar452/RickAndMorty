@@ -12,7 +12,7 @@ onMounted(() => {
 });
 
 function carregarPersonagens() {
-  fetch("https://rickandmortyapi.com/api/character?page="+pagina)
+  fetch("https://rickandmortyapi.com/api/character?page=" + pagina)
     .then(response => response.json())
     .then(response => {
       personagens.value = response.results;
@@ -21,14 +21,14 @@ function carregarPersonagens() {
     });
 }
 
-function Proxima(){
+function Proxima() {
   pagina++;
   carregarPersonagens();
   personagens.value = []
 }
 
-function Anterior(){
-  if (pagina > 1){
+function Anterior() {
+  if (pagina > 1) {
     pagina--;
     carregarPersonagens();
     personagens.value = []
@@ -41,27 +41,25 @@ function Anterior(){
   <main>
     <div class="container">
       <div class="col-sm-12">
-        <div class="card">
-          <div class="card-body row">
-            <ListCaracters v-for="personagem in personagens" 
-            :key="personagem.name" :name="personagem.name" 
+        <div class="card-body row">
+          <ListCaracters v-for="personagem in personagens" 
+            :key="personagem.name" :name="personagem.name"
             :location="personagem.location.name" 
-            :image="personagem.image"
-            :status="personagem.status" 
+            :image="personagem.image" 
+            :status="personagem.status"
             :gender="personagem.gender" 
-            :origin="personagem.origin.name"
-            :episode="personagem.episode"/>
+            :origin="personagem.origin.name" 
+            :episode="personagem.episode" />
+        </div>
+        <div class="row">
+          <div class="col">
+            <button @click="Anterior()" class="btn btn-dark">Anterior Pagina</button>
           </div>
-          <div class="row">
-            <div class="col">
-              <button @click="Anterior()" class="btn btn-dark">Anterior Pagina</button>
-            </div>
-            <div class="col text-center paginas">
-              <strong>{{ pagina }}</strong>
-            </div>
-            <div class="col text-end">
-              <button @click="Proxima()" class="btn btn-dark">Proxima Pagina</button>
-            </div>
+          <div class="col text-center paginas">
+            <strong>{{ pagina }}</strong>
+          </div>
+          <div class="col text-end">
+            <button @click="Proxima()" class="btn btn-dark">Proxima Pagina</button>
           </div>
         </div>
       </div>
@@ -70,15 +68,14 @@ function Anterior(){
 </template>
 
 <style>
-.btn{
-    width: 20rem;
-    height: 4rem;
-    margin: 2%;
-    margin-bottom: 12%;
+.btn {
+  width: 20rem;
+  height: 4rem;
+  margin: 2%;
+  margin-bottom: 12%;
 }
 
-.paginas{
+.paginas {
   margin-top: 2%;
 }
-
 </style>
