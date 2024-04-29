@@ -39,8 +39,8 @@ if (personagem.origin == 'unknown' || personagem.location == 'unknown'){
 </script>
 
 <template>
-    <div class="col-md-4">
-        <div class="card p-2 mb-3">
+    <div class="col-md-3">
+        <div class="card p-2 mb-3" style="height: 30rem;">
             <img :src="personagem.image" height="180rem" style="margin: auto;" alt="">
             <p class="text-center">Nome: {{ personagem.name }}</p>
             <p class="text-center">Genero: {{ personagem.gender }}</p>
